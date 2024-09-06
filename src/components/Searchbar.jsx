@@ -9,23 +9,26 @@ const Searchbar = () => {
       component="form"
       onSubmit={() => {}}
       sx={{
-        borderRadius: 20,
-        border: '1px solid #e3e3e3',
-        pl: 2,
+        borderRadius: 2,
+        // border: '1px solid #e3e3e3',
+        padding: 1,
+        backgroundColor: '#f2f2f2',
         boxShadow: 'none',
         mr: { sm: 5}
       }}
     >
+      <IconButton type='submit' sx = {{ mr: '5px', color: '#444746'}}>
+        <SearchIcon/>
+      </IconButton>
+
       <input
         className='search-bar'
-        placeholder='Search...'
+        placeholder='Search for videos...'
         value=""
+        style={{background: 'none', fontSize: '16px'}}
         onChange={() => {}}
       />
       
-      <IconButton type='submit' sx = {{ p: '10px', color: 'red'}}>
-        <SearchIcon/>
-      </IconButton>
     </Paper>
   )
 }
