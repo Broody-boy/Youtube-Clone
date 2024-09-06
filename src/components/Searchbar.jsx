@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Paper, IconButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
+import CloseIcon from '@mui/icons-material/Close'
 
 const Searchbar = () => {
+  const [searchText, setSearchText] = useState("");
+  const [isSearching, setSearching] = useState(false);
   return (
     <Paper
       component="form"
@@ -12,7 +15,7 @@ const Searchbar = () => {
         borderRadius: 2,
         // border: '1px solid #e3e3e3',
         padding: 1,
-        backgroundColor: '#f2f2f2',
+        backgroundColor: isSearching ? '#efefef' : '#f2f2f2',
         boxShadow: 'none',
         mr: { sm: 5}
       }}
@@ -24,10 +27,18 @@ const Searchbar = () => {
       <input
         className='search-bar'
         placeholder='Search for videos...'
-        value=""
+        value={searchText}
         style={{background: 'none', fontSize: '16px'}}
-        onChange={() => {}}
+        onChange={(e) => {
+          setSearchText(e.target.value)
+          setSearching(e.target.value !== '')
+        }}
       />
+
+      {isSearching && <IconButton sx = {{ mr: '5px', color: '#444746'}} onClick={(e) => {setSearching(false); setSearchText('')}}>
+        <CloseIcon/>
+      </IconButton>}
+
       
     </Paper>
   )
