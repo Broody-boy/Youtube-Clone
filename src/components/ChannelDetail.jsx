@@ -20,7 +20,7 @@ const ChannelDetail = () => {
       (data)=>{setchannelDetail(data?.items[0])}
     )
     
-    fetchFromAPI(`search?part=snippet&channelId=${id}&order=date`)
+    fetchFromAPI(`search?channelId=${id}&part=snippet%2Cid&order=date`)
     .then(
       (data)=>{setVideos(data?.items)}
     )
